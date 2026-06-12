@@ -15,17 +15,17 @@ Cython is a superset of Python that can be translated into C code and compiled i
 Workflow:
 
 ```text
-script.pyx
+example.pyx
     ↓
 Cython
     ↓
-script.c
+example.c
     ↓
 C Compiler
     ↓
-script.so / script.pyd
+example.so / example.pyd
     ↓
-import script
+import example
 ```
 
 This allows applications to distribute compiled binary modules instead of plain Python source files.
@@ -37,7 +37,7 @@ This allows applications to distribute compiled binary modules instead of plain 
 ```text
 project/
 ├── main.py
-├── script.pyx
+├── example.pyx
 ├── setup.py
 └── README.md
 ```
@@ -64,7 +64,7 @@ pip install cython setuptools
 
 ## Example Source Code
 
-### script.pyx
+### example.pyx
 
 ```python
 class Hello:
@@ -94,7 +94,7 @@ from Cython.Build import cythonize
 
 setup(
     ext_modules=cythonize(
-        "script.pyx",
+        "example.pyx",
         compiler_directives={"language_level": "3"}
     )
 )
@@ -117,19 +117,19 @@ Examples:
 **Linux**
 
 ```text
-script.cpython-313-x86_64-linux-gnu.so
+example.cpython-313-x86_64-linux-gnu.so
 ```
 
 **Termux (Android)**
 
 ```text
-script.cpython-313-aarch64-linux-android.so
+example.cpython-313-aarch64-linux-android.so
 ```
 
 **Windows**
 
 ```text
-script.cp313-win_amd64.pyd
+example.cp313-win_amd64.pyd
 ```
 
 ---
@@ -139,9 +139,9 @@ script.cp313-win_amd64.pyd
 ### main.py
 
 ```python
-import script
+import example
 
-script.run()
+example.run()
 ```
 
 Execute:
@@ -157,7 +157,7 @@ python main.py
 When Python executes:
 
 ```python
-import script
+import example
 ```
 
 it searches for a matching module.
@@ -165,21 +165,21 @@ it searches for a matching module.
 If a compiled extension module such as:
 
 ```text
-script.cpython-313-aarch64-linux-android.so
+example.cpython-313-aarch64-linux-android.so
 ```
 
 or:
 
 ```text
-script.cp313-win_amd64.pyd
+example.cp313-win_amd64.pyd
 ```
 
-is found, Python loads it as the `script` module.
+is found, Python loads it as the `example` module.
 
 Calling:
 
 ```python
-script.run()
+example.run()
 ```
 
 executes the compiled function exported by the extension module.
@@ -192,7 +192,7 @@ Files that can be distributed:
 
 ```text
 main.py
-script.so / script.pyd
+example.so / example.pyd
 README.md
 LICENSE
 ```
@@ -200,8 +200,8 @@ LICENSE
 Files that should not be distributed:
 
 ```text
-script.pyx
-script.c
+example.pyx
+example.c
 setup.py
 build/
 ```

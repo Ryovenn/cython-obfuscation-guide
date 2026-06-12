@@ -152,7 +152,7 @@ python main.py
 
 ---
 
-## How `import script` Works
+## How `import example` Works
 
 When Python executes:
 

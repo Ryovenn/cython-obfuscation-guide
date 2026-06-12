@@ -1,3 +1,3 @@
-import script
+import example
 
-script.run()
+example.run()

@@ -77,9 +77,7 @@ class Hello:
 
 def run():
     import os
-
     os.system('cls' if os.name == 'nt' else 'clear')
-
     obj = Hello()
     obj.print_hello()
 ```
@@ -97,9 +95,7 @@ from Cython.Build import cythonize
 setup(
     ext_modules=cythonize(
         "script.pyx",
-        compiler_directives={
-            "language_level": "3"
-        }
+        compiler_directives={"language_level": "3"}
     )
 )
 ```
